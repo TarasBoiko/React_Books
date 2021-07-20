@@ -62,6 +62,7 @@ export class Pagination extends Component {
             <button
               className="btn btn-primary"
               onClick={this.onNextPageHandler}
+              disabled={currentPage === pageNumbers.length}
             >
               Next
             </button>
