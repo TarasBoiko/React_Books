@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export class Pagination extends Component {
   onPrevPageHandler = (event) => {
@@ -12,48 +12,46 @@ export class Pagination extends Component {
   };
 
   render() {
-    const {
-      postPerPage,
-      totalBooks,
-      paginate,
-      minPageNumber,
-      maxPageNumber,
-      currentPage,
-    } = this.props;
+    const { postPerPage, totalBooks, paginate, maxPageNumber, currentPage } =
+      this.props;
 
     const paginationItemCount = Math.ceil(totalBooks / postPerPage);
     const pageNumbers = [...new Array(paginationItemCount)].map(
       (_, index) => index
     );
-    console.log("currentPage: ", currentPage);
-    console.log({ currentPage });
+    // console.log('currentPage: ', currentPage);
+    // console.log({ pageNumbers });
 
     const pagesSlice =
       currentPage + 5 < pageNumbers.length
-        ? pageNumbers.slice(currentPage - 5, currentPage + maxPageNumber)
-        : pageNumbers.slice(
-            pageNumbers.length - maxPageNumber,
-            pageNumbers.length
-          );
-    console.log("pagesSlice: ", pagesSlice);
+        ? pageNumbers.slice(currentPage, currentPage + maxPageNumber)
+        : pageNumbers.slice(currentPage + maxPageNumber, pageNumbers.length);
+
+    console.log('pagesSlice: ', pageNumbers.length);
 
     const renderListPagesNumber = pagesSlice.map((number) => {
       return (
         <li className="page-item" key={number}>
-          <button onClick={() => paginate(number)} className={`page-link ${number === currentPage ? 'current-page' : ''}`}>
+          <button
+            onClick={() => paginate(number)}
+            className={`page-link ${
+              number === currentPage ? 'current-page' : ''
+            }`}
+          >
             {number}
           </button>
         </li>
       );
     });
 
-    console.log(renderListPagesNumber);
-
     return (
       <nav>
         <ul className="pagination justify-content-center">
           <li className="page-item">
-            <button className="page-link" onClick={this.onPrevPageHandler}>
+            <button
+              className="btn btn-primary"
+              onClick={this.onPrevPageHandler}
+            >
               Previous
             </button>
           </li>
@@ -61,7 +59,10 @@ export class Pagination extends Component {
           {renderListPagesNumber}
 
           <li className="page-item">
-            <button className="page-link" onClick={this.onNextPageHandler}>
+            <button
+              className="btn btn-primary"
+              onClick={this.onNextPageHandler}
+            >
               Next
             </button>
           </li>

@@ -8,8 +8,8 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 75px;
-  background-color: #00828c;
+  height: 85px;
+  background-color: #388edf;
   color: white;
 }
 
@@ -73,17 +73,17 @@
   color: #fff;
   font-size: 100px;
 }
-/*   
-  .AllBooks {
-    background-image: url('/reat_firs_blog/src/image/img-2.jpg');
+  
+  /* .AllBooks {
+    background-image: url('../../image/img-2.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     color: #fff;
     font-size: 100px;
-  }
+  } */
   
-  .AllContacs {
+  /* .AllContacs {
     background-image: url('/reat_firs_blog/src/image/img-3.jpg');
     background-position: center;
     background-size: fill;
