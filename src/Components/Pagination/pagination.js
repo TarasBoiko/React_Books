@@ -25,18 +25,19 @@ export class Pagination extends Component {
     const pagesSlice =
       currentPage + 5 < pageNumbers.length
         ? pageNumbers.slice(currentPage, currentPage + maxPageNumber)
-        : pageNumbers.slice(currentPage + maxPageNumber, pageNumbers.length);
+        : pageNumbers.slice(currentPage - 10, pageNumbers.length);
 
-    console.log('pagesSlice: ', pageNumbers.length);
+    console.log(
+      'pagesSlice: ',
+      pageNumbers.slice(currentPage + maxPageNumber, pageNumbers.length)
+    );
 
     const renderListPagesNumber = pagesSlice.map((number) => {
       return (
         <li className="page-item" key={number}>
           <button
             onClick={() => paginate(number)}
-            className={`page-link ${
-              number === currentPage ? 'current-page' : ''
-            }`}
+            className={`page-link ${number === currentPage ? 'active' : ''}`}
           >
             {number}
           </button>
@@ -49,7 +50,16 @@ export class Pagination extends Component {
         <ul className="pagination justify-content-center">
           <li className="page-item">
             <button
+              className="btn btn-primary ms - 2"
+              onClick={() => paginate(1)}
+            >
+              First page
+            </button>
+          </li>
+          <li className="page-item">
+            <button
               className="btn btn-primary"
+              disabled={currentPage === 1}
               onClick={this.onPrevPageHandler}
             >
               Previous
@@ -60,11 +70,19 @@ export class Pagination extends Component {
 
           <li className="page-item">
             <button
-              className="btn btn-primary"
+              className="btn btn-primary ms-2"
               onClick={this.onNextPageHandler}
-              disabled={currentPage === pageNumbers.length}
+              disabled={currentPage === pageNumbers.length - 1}
             >
               Next
+            </button>
+          </li>
+          <li className="page-item">
+            <button
+              className="btn btn-primary ms-2"
+              onClick={() => paginate(pageNumbers.length - 1)}
+            >
+              Last page
             </button>
           </li>
         </ul>

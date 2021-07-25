@@ -47,7 +47,7 @@
 }
 
 .AllHome,
-.AllBooks,
+.AllBooksDetails,
 .AllContacs {
   display: flex;
   height: 90vh;
@@ -74,20 +74,28 @@
   font-size: 100px;
 }
   
-  /* .AllBooks {
-    background-image: url('../../image/img-2.jpg');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: #fff;
-    font-size: 100px;
-  } */
+.AllBooks {
+  justify-content: center;
+  background-image: url('../../image/img-2.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+} 
   
-  /* .AllContacs {
-    background-image: url('/reat_firs_blog/src/image/img-3.jpg');
+.AllContacs {
+    background-image: url('../../image/img-3.jpg');
     background-position: center;
     background-size: fill;
     background-repeat: no-repeat;
     color: #fff;
     font-size: 100px;
-  } */
+  }
+
+  .AllBooksDetails {
+    background-image: url('../../image/img-4.jpg');
+    background-position: center;
+    
+    background-repeat: no-repeat;
+    color: #fff;
+    font-size: 100px;
+  };
