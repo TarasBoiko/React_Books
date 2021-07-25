@@ -1,5 +1,7 @@
-import React, { Component } from "react";
-import { getBookDetails } from "../../../api/books";
+import React, { Component } from 'react';
+import { getBookDetails } from '../../../api/books';
+import Loading from '../../../Components/Loading/loading';
+import '../../../Components/Navbar/navbar.css';
 
 class BooksDetail extends Component {
   state = {
@@ -22,14 +24,18 @@ class BooksDetail extends Component {
   render() {
     const { data, loading } = this.state;
     return (
-      <div>
+      <div className="">
         {!loading && (
-          <div>
-            <h1>{data.id}</h1>
-            <h1>{data.title}</h1>
+          <div className="card text-center card border-dark mb-3">
+            <div className="card-body">
+              <h5 className="card-header">{data.title}</h5>
+              <p className="card-title">{data.description}</p>
+              <p className="card-text">{data.excerpt}</p>
+              <small className="text-muted">{data.publishDate}</small>
+            </div>
           </div>
         )}
-        {loading && <div>Loading...</div>}
+        {loading && <Loading />}
       </div>
     );
   }

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 
 import { getBooks } from '../../api/books';
+import '../../Components/Navbar/navbar.css';
 
 import Pagination from '../../Components/Pagination/pagination.js';
 import Loading from '../../Components/Loading/loading';
 import BookFields from './BookFields';
+import { Fragment } from 'react';
 
 class Books extends Component {
   state = {
@@ -34,6 +36,7 @@ class Books extends Component {
     const paginate = (pageNum) => this.setState({ currentPage: pageNum });
     const nextPage = () => this.setState({ currentPage: currentPage + 1 });
     const prevPage = () => this.setState({ currentPage: currentPage - 1 });
+    console.log(data);
 
     if (loading) {
       return (
@@ -43,17 +46,21 @@ class Books extends Component {
       );
     }
     return (
-      <div className="container">
-        <BookFields data={currentData} loading={loading} />
-        <Pagination
-          postPerPage={postPerPage}
-          totalBooks={data.length}
-          paginate={paginate}
-          nextPage={nextPage}
-          prevPage={prevPage}
-          maxPageNumber={maxPageNumber}
-          currentPage={currentPage}
-        />
+      <div className="AllBooks">
+        <Fragment>
+          <div className="container">
+            <BookFields data={currentData} loading={loading} />
+            <Pagination
+              postPerPage={postPerPage}
+              totalBooks={data.length}
+              paginate={paginate}
+              nextPage={nextPage}
+              prevPage={prevPage}
+              maxPageNumber={maxPageNumber}
+              currentPage={currentPage}
+            />
+          </div>
+        </Fragment>
       </div>
     );
   }
