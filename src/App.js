@@ -8,6 +8,7 @@ import BooksDetail from './pages/Books/BooksDetail';
 import Contacts from './pages/Contacts';
 import Feedback from './pages/Feedback/Feedback';
 import ContactsDetail from './pages/Contacts/ContactsDetail';
+import AppTodo from './Components/Todo/AppTodo';
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
             <ContactsDetail />
           </Route>
           <Route path="/feedback" component={Feedback} exact />
+          <Route path="/AppTodo" component={AppTodo} exact />
         </Switch>
       </Router>
     </>
