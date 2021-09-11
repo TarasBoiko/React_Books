@@ -9,7 +9,7 @@ export const types = {
 
 const initialState = {
   modalType: null,
-  modalProps: {},
+  modalProps: { isOpen: false },
 };
 
 export default function modalReducer(state = initialState, action) {
@@ -18,7 +18,7 @@ export default function modalReducer(state = initialState, action) {
       return {
         ...state,
         modalType: action.modalType,
-        modalProps: action.modalProps,
+        modalProps: { isOpen: true },
       };
 
     case types.HIDE_MODAL:

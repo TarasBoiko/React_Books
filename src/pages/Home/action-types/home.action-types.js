@@ -1,0 +1,4 @@
+export const HOME_ACTION_TYPES = {
+  SHOW_MODAL: 'SHOW_MODAL',
+  HIDE_MODAL: 'HIDE_MODAL',
+};
