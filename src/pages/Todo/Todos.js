@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { addTodos } from '../../pages/Todo/reducer/todo.reducer';
+import { actions } from '../../store/Todo/reducer/todo.reducer';
 import { GoPlus } from 'react-icons/go';
 import { motion } from 'framer-motion';
 
@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addTodo: (obj) => dispatch(addTodos(obj)),
+    addTodo: (obj) => dispatch(actions.addTodos(obj)),
   };
 };
 

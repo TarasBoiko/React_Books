@@ -10,13 +10,15 @@ $delay : $duration/6;
 }
 
 .bookshelf_wrapper {
-  margin: 400px;
-  position: flex;
+  margin: 600px;
+  position: sticky;
   justify-content: center;
   padding-right: 80px;
   top: 60%;
   left: 70%;
   transform: translate(-50%, -70%);
+  width: 600px;
+  height: 300px;
   
 }
 

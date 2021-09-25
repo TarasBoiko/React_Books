@@ -1,6 +1,6 @@
 import { combineReducers, createStore } from 'redux';
 import modalReducer from '../pages/Home/reducer/home.reducer';
-import todoReducer from '../pages/Todo/reducer/todo.reducer.js';
+import todoReducer from '../store/Todo/reducer/todo.reducer';
 
 import { composeWithDevTools } from 'redux-devtools-extension';
 // import monitorReducersEnhancer from './enhancers/monitorReducers';

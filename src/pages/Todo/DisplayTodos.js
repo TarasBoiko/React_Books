@@ -1,27 +1,17 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import {
-  addTodos,
-  completeTodos,
-  removeTodos,
-  updateTodos,
-} from '../../pages/Todo/reducer/todo.reducer.js';
+import { actions } from '../../store/Todo/reducer/todo.reducer';
 import TodoItem from '../Todo/TodoItems';
 import { AnimatePresence, motion } from 'framer-motion';
 
 const mapStateToProps = (state) => {
   return {
-    todos: state,
+    todos: state.todoReducer,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addTodo: (obj) => dispatch(addTodos(obj)),
-    removeTodo: (id) => dispatch(removeTodos(id)),
-    updateTodo: (obj) => dispatch(updateTodos(obj)),
-    completeTodo: (id) => dispatch(completeTodos(id)),
-  };
+const mapDispatchToProps = {
+  addTodo: actions.addTodos,
 };
 
 const DisplayTodos = (props) => {

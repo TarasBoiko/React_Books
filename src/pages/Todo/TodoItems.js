@@ -6,8 +6,6 @@ import { IoCheckmarkDoneSharp, IoClose } from 'react-icons/io5';
 const TodoItem = (props) => {
   const { item, updateTodo, removeTodo, completeTodo } = props;
 
-  console.log(TodoItem);
-
   const inputRef = useRef(true);
 
   const changeFocus = () => {
