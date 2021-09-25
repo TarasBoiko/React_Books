@@ -1,4 +1,4 @@
-import { lockScroll } from './lib/scrollLock';
+import { lockScroll } from '../../lib/lib_module/scrollLock.js';
 
 export const types = {
   INSERT_MODAL: 'INSERT_MODAL',

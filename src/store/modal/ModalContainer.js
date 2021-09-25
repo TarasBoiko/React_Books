@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { unlockScroll } from './lib/scrollLock';
+import { unlockScroll } from '../../lib/lib_module/scrollLock.js';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import { actions } from './modalReducer';
 
-import styles from './modal.module.css';
+import styles from '../../Components/css/modal.module.css';
 
 class ModalContainer extends Component {
   closeModal = () => {
@@ -66,7 +66,7 @@ class ModalContainer extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({ ...state.modalReducer });
+const mapStateToProps = (state, ownProps) => state.modalReducer;
 const mapDispatchToProps = (dispatch) => {
   return {
     closeModal: () => dispatch(actions.closeModal()),

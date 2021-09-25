@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import * as homeActions from './actions/home.actions';
 
-import styles from '../../store/modal/modal.module.css';
+import styles from '../../Components/css/modal.module.css';
 
 class Home extends Component {
   render() {

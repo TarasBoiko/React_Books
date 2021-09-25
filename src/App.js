@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './Components/css/App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './Components/Navbar/Navbar';
 import Home from './pages/Home';
@@ -8,7 +8,7 @@ import BooksDetail from './pages/Books/BooksDetail';
 import Contacts from './pages/Contacts';
 import Feedback from './pages/Feedback/Feedback';
 import ContactsDetail from './pages/Contacts/ContactsDetail';
-import AppTodo from './Components/Todo/AppTodo';
+import AppTodo from './pages/Todo/AppTodo';
 
 const App = () => {
   return (

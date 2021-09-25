@@ -36,7 +36,6 @@ class Books extends Component {
     const paginate = (pageNum) => this.setState({ currentPage: pageNum });
     const nextPage = () => this.setState({ currentPage: currentPage + 1 });
     const prevPage = () => this.setState({ currentPage: currentPage - 1 });
-    console.log(data);
 
     if (loading) {
       return (
