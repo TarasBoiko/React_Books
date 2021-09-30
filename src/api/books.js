@@ -1,7 +1,7 @@
-import client from "./client";
+import client from './client';
 
 export const getBooks = () => {
-  return client.get("/Books");
+  return client.get('/Books');
 };
 
 export const getBookDetails = (bookId) => {

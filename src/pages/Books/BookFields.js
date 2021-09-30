@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 export class BookFields extends Component {
   render() {
     const { data } = this.props;
+    console.log(data);
 
     return (
       <div>
