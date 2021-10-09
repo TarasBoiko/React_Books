@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-
-import { getBooks } from '../../api/books';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import '../../Components/Navbar/navbar.css';
 
 import Pagination from '../../Components/Pagination/pagination.js';
@@ -8,61 +7,49 @@ import Loading from '../../Components/Loading/loading';
 import BookFields from './BookFields';
 import { Fragment } from 'react';
 
-class Books extends Component {
-  state = {
-    loading: true,
-    data: [],
-    error: false,
-    currentPage: 1,
-    postPerPage: 3,
-    maxPageNumber: 10,
-  };
+function Books() {
+  const postBook = useSelector((state) => state.bookReducer);
 
-  componentDidMount() {
-    getBooks()
-      .then((data) => {
-        this.setState({ data, loading: false });
-      })
-      .catch((error) => console.log(error));
-  }
+  const { booksList, loading, currentPage, postPerPage, maxPageNumber } =
+    postBook;
 
-  render() {
-    const { data, loading, currentPage, postPerPage, maxPageNumber } =
-      this.state;
-    const indexOfLastPost = currentPage * postPerPage;
-    const indexOffirstPage = indexOfLastPost - postPerPage;
-    const currentData = data.slice(indexOffirstPage, indexOfLastPost);
+  console.log({ booksList, loading });
 
-    const paginate = (pageNum) => this.setState({ currentPage: pageNum });
-    const nextPage = () => this.setState({ currentPage: currentPage + 1 });
-    const prevPage = () => this.setState({ currentPage: currentPage - 1 });
+  const indexOfLastPost = currentPage * postPerPage;
+  const indexOffirstPage = indexOfLastPost - postPerPage;
+  const currentData = booksList.slice(indexOffirstPage, indexOfLastPost);
 
-    if (loading) {
-      return (
-        <h2>
-          <Loading />
-        </h2>
-      );
-    }
+  const paginate = (pageNum) => this.setState({ currentPage: pageNum });
+  const nextPage = () => this.setState({ currentPage: currentPage + 1 });
+  const prevPage = () => this.setState({ currentPage: currentPage - 1 });
+
+  console.log('Current data ', currentData);
+
+  if (loading) {
     return (
-      <div className="AllBooks">
-        <Fragment>
-          <div className="container">
-            <BookFields data={currentData} loading={loading} />
-            <Pagination
-              postPerPage={postPerPage}
-              totalBooks={data.length}
-              paginate={paginate}
-              nextPage={nextPage}
-              prevPage={prevPage}
-              maxPageNumber={maxPageNumber}
-              currentPage={currentPage}
-            />
-          </div>
-        </Fragment>
-      </div>
+      <h2>
+        <Loading />
+      </h2>
     );
   }
+  return (
+    <div className="AllBooks">
+      <Fragment>
+        <div className="container">
+          <BookFields data={currentData} />
+          <Pagination
+            postPerPage={postPerPage}
+            totalBooks={booksList.length}
+            paginate={paginate}
+            nextPage={nextPage}
+            prevPage={prevPage}
+            maxPageNumber={maxPageNumber}
+            currentPage={currentPage}
+          />
+        </div>
+      </Fragment>
+    </div>
+  );
 }
 
 export default Books;
