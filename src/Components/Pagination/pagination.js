@@ -19,18 +19,16 @@ export class Pagination extends Component {
     const pageNumbers = [...new Array(paginationItemCount)].map(
       (_, index) => index
     );
-    // console.log('currentPage: ', currentPage);
-    // console.log({ pageNumbers });
 
     const pagesSlice =
       currentPage + 5 < pageNumbers.length
         ? pageNumbers.slice(currentPage, currentPage + maxPageNumber)
         : pageNumbers.slice(currentPage - 10, pageNumbers.length);
 
-    console.log(
-      'pagesSlice: ',
-      pageNumbers.slice(currentPage + maxPageNumber, pageNumbers.length)
-    );
+    // console.log(
+    //   'pagesSlice: ',
+    //   pageNumbers.slice(currentPage + maxPageNumber, pageNumbers.length)
+    // );
 
     const renderListPagesNumber = pagesSlice.map((number) => {
       return (

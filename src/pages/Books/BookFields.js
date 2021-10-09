@@ -1,24 +1,33 @@
-import React, { Component } from 'react';
+import React, { Fragment } from 'react';
+import { useEffect } from 'react';
+import { fetchBooks } from '../../store/book/reducer/book.reducer';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
-export class BookFields extends Component {
-  render() {
-    const { data } = this.props;
-    console.log(data);
+function BookFields() {
+  const dispatch = useDispatch();
 
-    return (
-      <div>
-        {data.map((post) => (
+  useEffect(() => {
+    dispatch(fetchBooks());
+  }, [dispatch]);
+
+  // Select Store states
+  const postBook = useSelector((state) => state.bookReducer);
+
+  const { booksList } = postBook;
+  return (
+    <div>
+      <Fragment>
+        {booksList.map((post) => (
           <div key={post.id} className="alert alert-primary">
             <h3 className="alert-heading">{post.title}</h3>
             <p>{post.description}</p>
-
-            <Link to={`/books/${post.id}`}>View detail</Link>
           </div>
         ))}
-      </div>
-    );
-  }
+      </Fragment>
+    </div>
+  );
 }
+
 export default BookFields;

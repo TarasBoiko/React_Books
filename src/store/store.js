@@ -1,4 +1,5 @@
-import { combineReducers, createStore } from 'redux';
+import { combineReducers, createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import modalReducer from '../pages/Home/reducer/home.reducer';
 import todoReducer from './todo/reducer/todo.reducer';
 import bookReducer from './book/reducer/book.reducer';
@@ -13,7 +14,7 @@ const reducer = combineReducers({
 });
 
 // const enhancers = [monitorReducersEnhancer];
-const composedEnhancers = composeWithDevTools();
+const composedEnhancers = composeWithDevTools(applyMiddleware(thunk));
 
 let store = createStore(reducer, composedEnhancers);
 
