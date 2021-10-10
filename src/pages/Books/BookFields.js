@@ -1,21 +1,9 @@
 import React, { Fragment } from 'react';
-import { useEffect } from 'react';
-import { fetchBooks } from '../../store/book/reducer/book.reducer';
-import { useDispatch, useSelector } from 'react-redux';
 
 // import { Link } from 'react-router-dom';
 
 function BookFields() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchBooks());
-  }, [dispatch]);
-
-  // Select Store states
-  const postBook = useSelector((state) => state.bookReducer);
-
-  const { booksList } = postBook;
+  const { booksList } = this.props.booksState;
   return (
     <div>
       <Fragment>

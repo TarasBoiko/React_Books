@@ -9,7 +9,7 @@ export const fetchBooks = createAsyncThunk('book/fetchBooks', async () => {
 
     return data;
   } catch (error) {
-    return error?.response;
+    return error;
   }
 });
 
@@ -20,15 +20,22 @@ const bookSlice = createSlice({
     currentPage: 1,
     postPerPage: 3,
     maxPageNumber: 10,
+    loading: true,
+    error: false,
   },
   extraReducers: {
     [fetchBooks.pending]: (state) => {
       state.status = 'loading';
-      state.error = null;
+      state.error = false;
     },
     [fetchBooks.fulfilled]: (state, action) => {
       state.status = 'resolved';
+      state.loading = 'false';
       state.booksList = action.payload;
+    },
+    [fetchBooks.rejected]: (state) => {
+      state.status = 'rejected';
+      state.error = 'true';
     },
   },
 });
