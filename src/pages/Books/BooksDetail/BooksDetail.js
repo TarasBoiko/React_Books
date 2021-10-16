@@ -23,15 +23,16 @@ class BooksDetail extends Component {
   }
   render() {
     const { data, loading } = this.state;
+    console.log(data);
     return (
       <div className="">
         {!loading && (
-          <div className="card text-center card border-dark mb-3">
-            <div className="card-body">
-              <h5 className="card-header">{data.title}</h5>
-              <p className="card-title">{data.description}</p>
-              <p className="card-text">{data.excerpt}</p>
-              <small className="text-muted">{data.publishDate}</small>
+          <div>
+            <div>
+              <h5>{data.title}</h5>
+              <p>{data.description}</p>
+              <p>{data.excerpt}</p>
+              <small>{data.publishDate}</small>
             </div>
           </div>
         )}

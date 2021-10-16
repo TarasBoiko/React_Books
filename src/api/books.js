@@ -1,9 +1,9 @@
-import client from './client';
+import fetchBooks from './client';
 
 export const getBooks = () => {
-  return client.get('/Books');
+  return fetchBooks.get('/Books');
 };
-
+console.log(getBooks);
 export const getBookDetails = (bookId) => {
-  return client.get(`/Books/${bookId}`);
+  return fetchBooks.get(`/Books/${bookId}`);
 };
