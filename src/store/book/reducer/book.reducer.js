@@ -1,11 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+export const baseURL = 'https://fakerestapi.azurewebsites.net/api/v1';
+
 export const fetchBooks = createAsyncThunk('book/fetchBooks', async () => {
   try {
-    const { data } = await axios.get(
-      'https://fakerestapi.azurewebsites.net/api/v1/books'
-    );
+    const { data } = await axios.get(`${baseURL}/books`);
 
     return data;
   } catch (error) {
@@ -30,7 +30,7 @@ const bookSlice = createSlice({
     },
     [fetchBooks.fulfilled]: (state, action) => {
       state.status = 'resolved';
-      state.loading = 'false';
+      state.loading = false;
       state.booksList = action.payload;
     },
     [fetchBooks.rejected]: (state) => {

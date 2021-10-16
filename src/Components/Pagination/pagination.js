@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchBooks } from '../../store/book/reducer/book.reducer';
 
 export class Pagination extends Component {
+  componentDidMount() {
+    const { fetchBooksBegin } = this.props;
+    fetchBooksBegin();
+    console.log(fetchBooksBegin);
+  }
+
   onPrevPageHandler = (event) => {
     event.preventDefault();
     this.props.prevPage();
@@ -12,10 +20,15 @@ export class Pagination extends Component {
   };
 
   render() {
-    const { postPerPage, totalBooks, paginate, maxPageNumber, currentPage } =
-      this.props;
+    const { postPerPage, paginate, maxPageNumber, currentPage, booksList } =
+      this.props.booksState;
+
+    const totalBooks = booksList.length;
+
+    console.log(this.props.booksState);
 
     const paginationItemCount = Math.ceil(totalBooks / postPerPage);
+    console.log(paginationItemCount);
     const pageNumbers = [...new Array(paginationItemCount)].map(
       (_, index) => index
     );
@@ -24,7 +37,7 @@ export class Pagination extends Component {
       currentPage + 5 < pageNumbers.length
         ? pageNumbers.slice(currentPage, currentPage + maxPageNumber)
         : pageNumbers.slice(currentPage - 10, pageNumbers.length);
-
+    console.log(pagesSlice);
     // console.log(
     //   'pagesSlice: ',
     //   pageNumbers.slice(currentPage + maxPageNumber, pageNumbers.length)
@@ -42,7 +55,7 @@ export class Pagination extends Component {
         </li>
       );
     });
-
+    console.log(renderListPagesNumber);
     return (
       <nav>
         <ul className="pagination justify-content-center">
@@ -89,4 +102,10 @@ export class Pagination extends Component {
   }
 }
 
-export default Pagination;
+const mapStateToProps = (state) => ({
+  booksState: state.bookReducer,
+});
+
+const mapDispatchToProps = { fetchBooksBegin: fetchBooks };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Pagination);
